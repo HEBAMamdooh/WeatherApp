@@ -1,12 +1,12 @@
 import React, { Component } from 'react'
 import weatherState from './images/sunny.png';
 import SearchCity from './SearchCity';
+import SunState from './SunState';
 export default class Home extends Component {
   getData = async (e) => {
     e.preventDefault();
     const city = e.target.elements.city.value;
     const API_KEY = "5ffd543b92e07a100a209cea40b1d78a";
-
     const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=metric`);
     const data = await response.json();
     console.log(data);
@@ -15,7 +15,7 @@ export default class Home extends Component {
     return (
       <>
         <div className="row ">
-          <div className="col-lg-4 col-md-4 col-sm-12 bg-weight">
+          <div className="col-lg-4 col-md-4 col-sm-12 bg-success">
             <SearchCity getData={this.getData} />
             <div className="container text-md-start text-sm-center text-xs-center text-mb-center p-5">
               <div className="row">
@@ -40,7 +40,7 @@ export default class Home extends Component {
               </div>
             </div>
           </div>{/* right-side */}
-          <div className="col-lg-8 col-md-8 col-sm-12 bg-light ">
+          <div className="col-lg-8 col-md-8 col-sm-12 bg-info ">
             <div className="container">
               <div className="navbar">
                 <div className="container">
@@ -94,11 +94,7 @@ export default class Home extends Component {
                   </div>
                 </div>{/* wind-state */}
                 <div className="col-md-4">
-                  <div className="card m-1 shadow-sm">
-                    <div className="container">
-                      sun-states
-                    </div>
-                  </div>
+                  <SunState />
                 </div>{/* sun-states */}
                 <div className="col-md-4">
                   <div className="card m-1 shadow-sm">
